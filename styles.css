@@ -2,97 +2,176 @@
 
 body {
     margin: 0;
-    background-color: black;
+    background-color: #111;
     font-family: "Cinzel", sans-serif;
+    color: white;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .landing {
-    background-size: cover;
+    position: relative;
     height: 100vh;
     width: 100vw;
-}
-
-.info{
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    background-color: black;
-    color: white;
     display: flex;
-    padding: 2rem 2rem;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.nav-links{
+.info {
+    font-family: "Raleway", sans-serif;
+    background-color: #222;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-top: 4px solid #3498db;
+    gap: 2rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 5px 10px;
+    backdrop-filter: blur(5px);
+    transition: background 0.3s;
+    z-index: 1000;
+    height: 50px;
+}
+
+.logo img {
+    max-width: 6rem;
+    height: auto;
+}
+
+.nav-links {
     list-style: none;
+    display: flex;
+    gap: 10px;
+    position: relative;
 }
 
 .nav-links a {
     text-decoration: none;
     color: white;
-    font-size: 1rem;
-    display: block;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #000000;
+}
+
+.dropdown {
+    position: relative;
 }
 
 .dropdown-menu {
     position: absolute;
-    top: 100%;
-    left: auto;
-    right: 2.5rem;
+    top: 60%;
+    left: -200px;
     list-style: none;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     min-width: 200px;
     display: none;
+    padding: 10px 0;
+    border-radius: 8px;
+}
+
+.dropdown:hover .dropdown-menu,
+.menu:hover+.dropdown-menu,
+.dropdown-menu:hover,
+.menu:hover~.dropdown-menu {
+    display: block;
 }
 
 .dropdown-menu a {
-    list-style: none;
+    display: block;
+    padding: 10px;
     color: white;
-    padding: 20px;
-    display: block;
-    text-decoration: none;
+    transition: background 0.3s;
 }
 
-.dropdown:focus-within .dropdown-menu {
-    display: block;
+.dropdown-menu a:hover {
+    background: #3498db;
 }
 
-.description{
-    font-weight: 200;
-    padding-left: 1rem;
-    text-decoration: underline;
-}
-
-.everestpics img{
-    width: 23rem;
-    height: 20rem;
-    border-radius: 10%;
-    object-fit: cover;
-}
-
-.descriptionBox{
-    max-width: 300px;
-    margin-top:1rem;
-    border: 1px solid white;
-    width: 80%;
-    border-radius: 20px;
-    padding: 2rem;
-}
-
-
-.navbar {
+.content-row {
     display: flex;
-    justify-content: space-between;
-    position: fixed;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
     width: 100%;
-    background: transparent;
+    max-width: 1000px;
+    flex-wrap: wrap;
+    text-align: left;
 }
 
-.logo img{
-    padding: 1rem 1.5rem;
-    max-width:10rem;
-    max-height:10rem;
-    opacity: 0;
-    animation: fadeIn 5s ease-in 2s forwards;
+.description {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
+    margin-bottom: 1rem;
+    flex: 1 1 100%;
+    text-align: center;
+}
+
+.everestpics img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.3s;
+    padding: 10px;
+}
+
+.everestpics img:hover {
+    transform: scale(1.05);
+}
+
+.descriptionBox {
+    width: 300px;
+    height: auto;
+    padding: 1.5rem;
+    border: 2px solid white;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+}
+
+.descriptionBox:hover {
+    transform: translateY(-5px);
+}
+
+.explore {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.menu img {
+    max-width: 2rem;
+    transition: transform 0.3s;
+    margin-left: -60px;
+}
+
+.menu img:hover {
+    transform: rotate(90deg);
 }
 
 .everest-video {
@@ -103,87 +182,62 @@ body {
     z-index: -1;
 }
 
-.explore{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    padding: 15px 30px;
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: ghostwhite;
-    white-space: nowrap;
-    opacity: 0;
-    animation: fadeInUp 1s ease-in-out 10s forwards;
-}
-
-.menu img{
-    padding-top: 1.3rem;
-    padding-right: 2rem;
-    opacity: 0;
-    max-width: 2.5rem;
-    animation: fadeIn 5s ease-in 2s forwards;
+footer {
+    background: #000;
+    color: #bbb;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9rem;
 }
 
 @keyframes fadeIn {
     from {
-        display: none;
         opacity: 0;
     }
-    to {
-        display: block;
-        opacity: 1;
-    }
-}
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translate(-50%, 2rem);
-    }
     to {
         opacity: 1;
-        transform: translate(-50%, -50%);
     }
 }
 
-.video-mobile {
-    display: block;
-}
-.video-desktop {
-    display: none;
-}
+@media (max-width: 820px) {
+    .info {
+        padding: 2rem;
+    }
 
-footer{
-    background: black;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    margin: 0;
-    color: red;
-}
-
-@media (min-width: 600px) {
-    .info{
-        font-family: "Raleway", sans-serif;
-        font-optical-sizing: auto;
-        background-color: black;
-        color: white;
-        display: flex;
-        padding: 2rem 2rem;
+    .content-row {
         flex-direction: column;
-        margin: 0 auto;
         text-align: center;
-        align-items: center;
-        justify-content: center;
+    }
+
+    .descriptionBox {
+        width: 90%;
+    }
+
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        height: 50px;
+        padding: 5px 10px;
+    }
+
+    .logo {
+        order: 1;
+    }
+
+    .nav-links {
+        order: 2;
+        flex-direction: row;
+        padding: 0;
+    }
+
+    .dropdown-menu {
+        transform: none;
+    }
+
+    .everestpics img {
+        width: 100%;
+        max-width: 300px;
         height: auto;
     }
-
-    .video-mobile {
-        display: none;
-    }
-    .video-desktop {
-        display: block
-    }
 }
-
-
